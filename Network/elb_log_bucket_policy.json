@@ -1,0 +1,19 @@
+{
+	"Id": "Policy1479463923828",
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Stmt1479463919353",
+			"Action": [
+				"s3:PutObject"
+			],
+			"Effect": "Allow",
+			"Resource": "${elb_s3_bucket}",
+			"Principal": {
+				"AWS": [
+					"156460612806"
+				]
+			}
+		}
+	]
+}
