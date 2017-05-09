@@ -74,5 +74,7 @@ Whilst unnecessarily complex for the current scenario, splitting out into additi
 
 Docker should be considered as an alternative to the current git hosted executable.
 
+Monitor the clodwatch and S3 logs using an ELK stack or Splunk. (Note: The app currently produces no output).
+
 
 
