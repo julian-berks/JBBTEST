@@ -1,2 +1,70 @@
 # JBBTEST
-Test Repo before Cap
+Scripts compatible with terraform version 0.9.4
+
+Pre-requisites
+1) terraform (minimum version 0.9.4) 
+2) AWS command line interface installed and configured to log into an appropriate AWS account with sufficient privileges to build all necessary components. AWS AdministratorAccess is recommended. Details on how to do this differ between AWS implementations and are therefore out of scope of this document.
+3) The automation script assumes you are running on a unix server.
+
+Description
+This set of scripts, creates a VPC, 3 Subnets, security groups and an autoscaling group to create 2 applications servers (configurable).
+On start-up, each server pulls a binary copy of the application from Git Hub and executes it.
+An elastic load balancer manages traffic to the application and listens on port 80.
+
+A build.sh shell script is provided to, if necessary, create the backend S3 bucket needed to store the state files, automate the initialisation of terraform and run the build process.
+A teardown.sh script is provided to automate the deletion of the stack.
+
+
+To run :
+1) Pull this repository down to your machine
+3) run build.sh with the appropriate stack name (e.g. build.sh Dev)
+4) After processing, terraform should complete with the following
+
+Apply complete! Resources: 30 added, 0 changed, 0 destroyed.
+
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `terraform show` command.
+
+State path: 
+
+Outputs:
+
+application-url = load-balancer-770749828.eu-west-1.elb.amazonaws.com
+
+
+To Test
+Enter the application-url returned above into your browser.
+
+
+Logging.
+EC2 instance and application logs are available in cloud watch.
+ELB logs are written to an S3 bucket identified by the elb-log-bucket variable in main.tf.
+
+
+To tear down the stack.
+1) run build.sh with the appropriate stack name (e.g. build.sh Dev)
+2) Answer yes when prompted.
+
+
+
+
+Suggested Future Enhancements
+
+rewrite the 2 shell scripts in python to allow for non unix machines.
+
+The ELB should be switched to using https (no approved CA available at this time).
+
+The ELB DNS name should be aliased with a more friendly DNS name.
+
+All terraform modules are currently in the same Git repository. It would be advisable to split modules into separate repositories and utilise the Git source capability of the terraform modules mechanism. This would simplify multiple team co-operation.
+
+Keys should be extracted from this git repository and relocated into a secure store, such as Vault.
+
+Whilst unnecessarily complex for the current scenario, splitting out into additional modules should be considered for any additional functionality.
+
+Docker should be considered as an alternative to the current git hosted executable.
+
+
+
