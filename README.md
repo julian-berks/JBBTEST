@@ -50,7 +50,7 @@ ELB logs are written to an S3 bucket identified by the elb-log-bucket variable i
 
 To tear down the stack
 ======================
-1) run build.sh with the appropriate stack name (e.g. build.sh Dev)
+1) run teardown.sh with the appropriate stack name (e.g. teardown.sh Dev)
 2) Answer yes when prompted.
 
 
