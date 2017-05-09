@@ -5,27 +5,26 @@ Pre-requisites
 ==============
 1) terraform (minimum version 0.9.4) 
 2) AWS command line interface installed and configured to log into an appropriate AWS account with sufficient privileges to build all necessary components. AWS AdministratorAccess is recommended. Details on how to do this differ between AWS implementations and are therefore out of scope of this document.
-3) The automation script assumes you are running on a unix server.
+3) The automation scripts assume you are running on a unix server.
 
 Description
 ===========
 This set of scripts, creates a VPC with internet gateway, 2 Subnets (app and DMZ), a NAT gateway for use by the app servers,  security groups and an autoscaling group to create 2 applications servers (configurable).
-On start-up, each server pulls a binary copy of the application from Git Hub and executes it.
+On start-up, each server pulls a binary copy of the application from a separate Git Hub code repository (julian-berks/Capgemini-Code/master/GoTest) and executes it.
 An elastic load balancer manages traffic to the application and listens on port 80.
 
-The stack is hard coded to run in eu-west-1
-
 A build.sh shell script is provided to, if necessary, create the backend S3 bucket needed to store the state files, automate the initialisation of terraform and run the build process.
-A teardown.sh script is provided to automate the deletion of the stack.
+A teardown.sh script is also provided to automate the deletion of the stack.
+The build.sh script requires 2 parameters, apply or plan and the name of the stack (Dev or Prod as defined by the stack directories).
 
-An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be needed. However, for security, no bastion server has been provided.
+An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be required. However, for security reasons, no bastion server has been provided.
 
 
 To run :
 ========
 1) Pull this repository down to your machine
-2) run build.sh with the appropriate stack name (e.g. build.sh Dev)
-3) After processing, terraform should complete with the following
+2) run build.sh with the appropriate task (plan or apply) as parameter 1 and stack name as parameter 2 (e.g. build.sh plan Dev)
+3) After a successful build, terraform should complete with the following
 
 Apply complete! Resources: 30 added, 0 changed, 0 destroyed.
 
