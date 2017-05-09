@@ -1,12 +1,14 @@
-# JBBTEST
+# Julian Berks - Capgemini Terraform test - May 2017
 Scripts compatible with terraform version 0.9.4
 
 Pre-requisites
+==============
 1) terraform (minimum version 0.9.4) 
 2) AWS command line interface installed and configured to log into an appropriate AWS account with sufficient privileges to build all necessary components. AWS AdministratorAccess is recommended. Details on how to do this differ between AWS implementations and are therefore out of scope of this document.
 3) The automation script assumes you are running on a unix server.
 
 Description
+===========
 This set of scripts, creates a VPC, 3 Subnets, security groups and an autoscaling group to create 2 applications servers (configurable).
 On start-up, each server pulls a binary copy of the application from Git Hub and executes it.
 An elastic load balancer manages traffic to the application and listens on port 80.
@@ -16,9 +18,10 @@ A teardown.sh script is provided to automate the deletion of the stack.
 
 
 To run :
+========
 1) Pull this repository down to your machine
-3) run build.sh with the appropriate stack name (e.g. build.sh Dev)
-4) After processing, terraform should complete with the following
+2) run build.sh with the appropriate stack name (e.g. build.sh Dev)
+3) After processing, terraform should complete with the following
 
 Apply complete! Resources: 30 added, 0 changed, 0 destroyed.
 
@@ -35,15 +38,18 @@ application-url = load-balancer-770749828.eu-west-1.elb.amazonaws.com
 
 
 To Test
+=======
 Enter the application-url returned above into your browser.
 
 
-Logging.
+Logging
+=======
 EC2 instance and application logs are available in cloud watch.
 ELB logs are written to an S3 bucket identified by the elb-log-bucket variable in main.tf.
 
 
-To tear down the stack.
+To tear down the stack
+======================
 1) run build.sh with the appropriate stack name (e.g. build.sh Dev)
 2) Answer yes when prompted.
 
@@ -51,6 +57,7 @@ To tear down the stack.
 
 
 Suggested Future Enhancements
+=============================
 
 rewrite the 2 shell scripts in python to allow for non unix machines.
 
