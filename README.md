@@ -9,12 +9,16 @@ Pre-requisites
 
 Description
 ===========
-This set of scripts, creates a VPC, 3 Subnets, security groups and an autoscaling group to create 2 applications servers (configurable).
+This set of scripts, creates a VPC with internet gateway, 2 Subnets (app and DMZ), a NAT gateway for use by the app servers,  security groups and an autoscaling group to create 2 applications servers (configurable).
 On start-up, each server pulls a binary copy of the application from Git Hub and executes it.
 An elastic load balancer manages traffic to the application and listens on port 80.
 
+The stack is hard coded to run in eu-west-1
+
 A build.sh shell script is provided to, if necessary, create the backend S3 bucket needed to store the state files, automate the initialisation of terraform and run the build process.
 A teardown.sh script is provided to automate the deletion of the stack.
+
+An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be needed. However, for security, no bastion server has been provided.
 
 
 To run :
@@ -41,6 +45,9 @@ To Test
 =======
 Enter the application-url returned above into your browser.
 
+to Modify
+=========
+Most settings, including the region and availability zones available are configurable via the main.tf file.
 
 Logging
 =======
