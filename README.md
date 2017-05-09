@@ -66,7 +66,7 @@ To tear down the stack
 Suggested Future Enhancements
 =============================
 
-rewrite the 2 shell scripts in python to allow for non unix machines.
+rewrite the 2 shell scripts in python to allow for different operating systems.
 
 The ELB should be switched to using https (no approved CA available at this time).
 
