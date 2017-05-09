@@ -20,8 +20,8 @@ A teardown.sh script is also provided to automate the deletion of the stack.
 An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be required. However, for security reasons, no bastion server has been provided.
 
 
-To run :
-========
+To run
+======
 1) Pull this repository down to your unix machine
 2) run build.sh with the appropriate task (plan or apply) as parameter 1 and stack name as parameter 2 (e.g. build.sh plan Dev)
 3) After a successful build, terraform should complete with the following
