@@ -14,15 +14,15 @@ On start-up, each server pulls a binary copy of the application from a separate 
 An elastic load balancer manages traffic to the application and listens on port 80.
 
 A build.sh shell script is provided to, if necessary, create the backend S3 bucket needed to store the state files, automate the initialisation of terraform and run the build process.
+
 A teardown.sh script is also provided to automate the deletion of the stack.
-The build.sh script requires 2 parameters, apply or plan and the name of the stack (Dev or Prod as defined by the stack directories).
 
 An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be required. However, for security reasons, no bastion server has been provided.
 
 
 To run :
 ========
-1) Pull this repository down to your machine
+1) Pull this repository down to your unix machine
 2) run build.sh with the appropriate task (plan or apply) as parameter 1 and stack name as parameter 2 (e.g. build.sh plan Dev)
 3) After a successful build, terraform should complete with the following
 
