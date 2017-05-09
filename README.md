@@ -45,7 +45,8 @@ Enter the application-url returned above into your browser.
 Logging
 =======
 EC2 instance and application logs are available in cloud watch.
-ELB logs are written to an S3 bucket identified by the elb-log-bucket variable in main.tf.
+
+ELB logs are written to an S3 bucket identified by the elb-log-bucket variable within the appropriate main.tf.
 
 
 To tear down the stack
