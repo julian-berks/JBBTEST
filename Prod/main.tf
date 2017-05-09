@@ -4,10 +4,19 @@ module "Prod" {
   cidr-block = "172.31.0.0/16"
   ip-base-value = "36"
   elb-log-bucket = "prodcaptest-elb-bucket"
-  state-bucket = "prodcaptest-terraform-state"
   key-filename = "keyfile.pub"
   min-instances = 2
   max-instances = 2
+  region = "eu-west-1"
+  zones = [ "eu-west-1a", "eu-west-1b"]
+}
+
+terraform {
+  backend "s3" {
+    bucket = "captest-terraform"
+    key    = "/prod"
+    region = "eu-west-1"
+  }
 }
 
 

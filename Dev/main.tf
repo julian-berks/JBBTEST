@@ -7,6 +7,8 @@ module "Dev" {
   key-filename = "keyfile.pub"
   min-instances = 2
   max-instances = 2
+  region = "eu-west-1"
+  zones = [ "eu-west-1a", "eu-west-1b"]
 }
 
 terraform {

@@ -22,11 +22,6 @@ variable "ip-base-value" {
 }
 
 
-variable "dns-name"  {
-   description = "Name for the dns zone"
-   default = ""
-}
-
 variable "key-filename" {
     description = "filename of the server key file"
 	default = ""
@@ -53,8 +48,6 @@ variable "max-instances" {
     default = 2
 }
 
-
-#########   Static Variables    #########################
 
 variable "region"     { 
   description = "AWS region to host your network"
