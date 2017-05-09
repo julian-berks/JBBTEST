@@ -1,5 +1,5 @@
 module "Dev" {
-  source = "../Network"
+  source = "../Go-App"
   vpc-name  = "Dev-VPC"
   cidr-block = "172.31.0.0/16"
   ip-base-value = "12"

@@ -30,7 +30,7 @@ resource "aws_launch_configuration" "app" {
     name_prefix = "app-"
     image_id = "${data.aws_ami.container.id}"
     instance_type = "t2.micro"
-    user_data = "${file("../Network/app-user-data.txt")}"
+    user_data = "${file("../Go-App/app-user-data.txt")}"
     security_groups = ["${aws_security_group.app.id}"]
     iam_instance_profile = "${aws_iam_instance_profile.ec2_server_role.id}"
     key_name = "ssh_key"

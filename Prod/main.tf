@@ -1,5 +1,5 @@
 module "Prod" {
-  source = "../Network"
+  source = "../Go-App"
   vpc-name  = "Prod-VPC"
   cidr-block = "172.31.0.0/16"
   ip-base-value = "36"

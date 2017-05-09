@@ -7,7 +7,7 @@ data "aws_caller_identity" "current" { }
 
 data "template_file" "elb-log-bucket-policy"
 { 
-      template = "${file("../Network/elb_log_bucket_policy.json")}"
+      template = "${file("../Go-App/elb_log_bucket_policy.json")}"
 
    vars {
         account = "${data.aws_caller_identity.current.account_id}"
