@@ -9,6 +9,14 @@ module "Dev" {
   max-instances = 2
 }
 
+terraform {
+  backend "s3" {
+    bucket = "captest-terraform"
+    key    = "/dev"
+    region = "eu-west-1"
+  }
+}
+
 
 output "application-url" {
    value = "${module.Dev.application-url}"

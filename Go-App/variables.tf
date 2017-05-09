@@ -32,12 +32,6 @@ variable "key-filename" {
 	default = ""
 }
 
-variable "state-bucket" {
-     description = "Name of the bucket holding the tfstate file"
-	 default = ""
-}
-
-
 variable "elb-log-bucket" {
     description = "Name of the bucket used to store elb logs"
 	 default = ""
