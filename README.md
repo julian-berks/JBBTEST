@@ -9,7 +9,7 @@ Pre-requisites
 
 Description
 ===========
-This set of scripts, creates a VPC with internet gateway, 2 Subnets (app and DMZ), a NAT gateway for use by the app servers,  security groups and an autoscaling group to create 2 applications servers (configurable).
+This set of scripts creates a VPC with internet gateway, 2 Subnets (app and DMZ), a NAT gateway for use by the app servers,  security groups and an autoscaling group to create 2 applications servers (configurable).
 On start-up, each server pulls a binary copy of the application from a separate Git Hub code repository (julian-berks/Capgemini-Code/master/GoTest) and executes it.
 An elastic load balancer manages traffic to the application and listens on port 80.
 
@@ -46,7 +46,7 @@ Enter the application-url returned above into your browser.
 
 to Modify
 =========
-Most settings, including the region and availability zones available are configurable via the main.tf file.
+Most settings, including the region and availability zones are configurable via variables defined in the main.tf file.
 
 Logging
 =======
