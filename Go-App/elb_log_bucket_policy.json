@@ -11,7 +11,7 @@
 			"Resource": "${elb_s3_bucket}",
 			"Principal": {
 				"AWS": [
-					"156460612806"
+					"arn:aws:iam::156460612806:root"
 				]
 			}
 		}

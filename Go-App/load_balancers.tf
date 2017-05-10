@@ -10,7 +10,6 @@ data "template_file" "elb-log-bucket-policy"
       template = "${file("../Go-App/elb_log_bucket_policy.json")}"
 
    vars {
-        account = "${data.aws_caller_identity.current.account_id}"
         elb_s3_bucket = "${format("%s%s%s%s%s", "arn:aws:s3:::", "${var.elb-log-bucket}", "/log/AWSLogs/", "${data.aws_caller_identity.current.account_id}", "/*")}"
         }
 }
@@ -19,7 +18,7 @@ data "template_file" "elb-log-bucket-policy"
 
 # external Load Balancer
 resource "aws_elb" "load_balancer" {
-  name = "load-balancer"
+  name = "${var.stack-name}-ext-load-balancer"
   subnets = ["${aws_subnet.dmz_subnet.*.id}"]
   security_groups = ["${aws_security_group.elb.id}"]
  

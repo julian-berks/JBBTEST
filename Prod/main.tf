@@ -1,6 +1,7 @@
 module "Prod" {
   source = "../Go-App"
   vpc-name  = "Prod-VPC"
+  stack-name = "prod"
   cidr-block = "172.31.0.0/16"
   ip-base-value = "36"
   elb-log-bucket = "prodcaptest-elb-bucket"

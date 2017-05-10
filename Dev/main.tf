@@ -1,6 +1,7 @@
 module "Dev" {
   source = "../Go-App"
   vpc-name  = "Dev-VPC"
+  stack-name = "dev"
   cidr-block = "172.31.0.0/16"
   ip-base-value = "12"
   elb-log-bucket = "devcaptest-elb-bucket"

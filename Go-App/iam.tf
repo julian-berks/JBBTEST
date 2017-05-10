@@ -1,8 +1,9 @@
 ########################################################################################################
 # EC2 Server Role
+########################################################################################################
 
 resource "aws_iam_role" "ec2_server_role" {
-    name = "ec2-server-role"
+     name = "${var.stack-name}-ec2-server-role"
 	path = "/"
     assume_role_policy = <<EOF
 {
@@ -24,7 +25,7 @@ EOF
 
 # IAM Profile Version
 resource "aws_iam_instance_profile" "ec2_server_role" {
-    name = "ec2-server-role"
+    name = "${var.stack-name}-ec2-server-role"
     role = "${aws_iam_role.ec2_server_role.name}"
 }
 
@@ -33,7 +34,7 @@ resource "aws_iam_instance_profile" "ec2_server_role" {
 #EC2-Cloudwatch-Logs
 # For EC2 Instances to access Cloudwatch.
 resource "aws_iam_policy" "ec2_cloudwatchlogs" {
-    name = "ec2-cloudwatchlogs"
+    name = "${var.stack-name}-ec2-cloudwatchlogs"
 	path = "/"
     description = "EC2-CloudWatchLogs"
     policy = <<EOF

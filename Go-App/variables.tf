@@ -9,6 +9,10 @@ variable "vpc-name" {
   default     = ""
 }
 
+variable "stack-name" {
+  description = "Name for stack (dev/prod etc)"
+  default     = ""
+}
 
 variable "cidr-block" {
    description = "Base CIDR"
@@ -33,11 +37,6 @@ variable "elb-log-bucket" {
 } 
 
 
-variable "scaling-schedule" {
-    description = "1 - create a scaling schedule 0 - dont"
-	 default = 0
-} 
-
 variable "min-instances" {
     description = "The minimum number of application server instances"
     default = 1
@@ -58,8 +57,4 @@ variable "zones" {
   type = "list"
   default = [ "eu-west-1a", "eu-west-1b"]
 } 
-
-
-
-
 
