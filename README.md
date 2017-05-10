@@ -19,6 +19,7 @@ A teardown.sh script is also provided to automate the deletion of the stack.
 
 An SSH key for the EC2 instances and a "Bastion security group" has been provided to assist in the creation of an EC2 bastion server should access to the servers be required. However, for security reasons, no bastion server has been provided.
 
+Names are configured to enable Dev/Prod stacks to be built in the same AWS account if required.
 
 To run
 ======
